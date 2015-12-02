@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Dialing PhoneBuzz</title>
+	</head>
+	<body>
+		<form action="" method="post" name="phase2">
+			{{ form.hidden_tag() }}
+			<p>
+				Please enter a valid phone number:<br>
+				{{ form.number(size=10) }}<br>
+				{% for error in form.number.errors %}
+				<span style="color: red;">{{ error }}</span><br>
+				{% endfor %}
+			</p>
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			{% for message in messages %}
+			<span style="color: green;">{{ message }}</span><br>
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
+		    <p><input type="submit" value="Submit"></p>
+		</form>
+	</body>
+</html>
